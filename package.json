@@ -1,0 +1,45 @@
+{
+  "name": "grunt-clowncar",
+  "description": "Generate responsive images with clown car technique",
+  "version": "0.0.1",
+  "homepage": "https://github.com/shiawuen/grunt-clowncar",
+  "author": {
+    "name": "Tan Shiaw Uen",
+    "email": "shiawuen@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/shiawuen/grunt-clowncar.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shiawuen/grunt-clowncar/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/shiawuen/grunt-clowncar/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "Gruntfile.js",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-nodeunit": "~0.2.0",
+    "grunt": "~0.4.1"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.1"
+  },
+  "keywords": [
+    "gruntplugin", "clowncar", "svg", "responsive"
+  ],
+  "dependencies": {
+    "gm": "~1.11.0"
+  }
+}
