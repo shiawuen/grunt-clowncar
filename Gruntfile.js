@@ -45,7 +45,14 @@ module.exports = function(grunt) {
           sizes: ['50%', '45%']
         , quality: 75
         },
-        files: { 'tmp/percent_sizes/grunt.svg' : 'test/fixtures/grunt.jpg'}
+        files: { 'tmp/percent_sizes/grunt.svg' : 'test/fixtures/grunt.jpg' },
+      },
+      percent_sizes_error: {
+        options: {
+          sizes: ['foo', 'bar']
+        , quality: 75
+        },
+        files: { 'tmp/percent_sizes_error/grunt.svg' : 'test/fixtures/grunt.jpg' },
       }
     },
 

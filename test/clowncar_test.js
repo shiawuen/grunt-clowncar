@@ -52,5 +52,14 @@ exports.clowncar = {
     });
 
     test.done();
+  },
+  percent_sizes_error: function(test) {
+    test.expect(1);
+
+    var actualFiles = fs.readdirSync('tmp/percent_sizes_error');
+
+    test.equal(actualFiles.length, 0, "Shouldn't create files.");
+
+    test.done();
   }
 };
