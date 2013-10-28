@@ -65,6 +65,9 @@ module.exports = function(grunt) {
 
         function createThumb(width, callback){
           width = normalise(width);
+          if (isNaN(width)) {
+            return NaN;
+          }
           var name = filename + '-' + width + ext;
           var newHeight = width / size.width * size.height;
 
@@ -113,16 +116,9 @@ module.exports = function(grunt) {
         }
 
         function normalise(width){
-          if (typeof width === 'number') {
-            return width;
-          }
-          else {
-            width = Number(width.replace('%', ''));
-            if (isNaN(width)) {
-              return NaN;
-            }
-            return Math.floor(size.width * width / 100);
-          }
+          return typeof width === 'number'?
+            width
+          : Math.floor(size.width * Number(width.replace('%', '')) / 100);
         }
 
       });
