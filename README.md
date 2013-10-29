@@ -50,7 +50,8 @@ grunt.initConfig({
 Type: `Array`
 Default value: `[600, 400]`
 
-Images with width as specified in the array to be generated
+Images with width as specified in the array to be generated.
+Widths can also be specified as percentage: `['75%', '50%', '30%']`
 
 #### options.quality
 Type: `Number`

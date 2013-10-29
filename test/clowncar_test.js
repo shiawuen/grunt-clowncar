@@ -37,5 +37,29 @@ exports.clowncar = {
     });
 
     test.done();
+  },
+  percent_sizes: function(test) {
+    test.expect(4);
+
+    var actual = grunt.file.read('tmp/percent_sizes/grunt.svg');
+    var expected = grunt.file.read('test/expected/percent_sizes/grunt.svg');
+    var actualFiles = fs.readdirSync('tmp/percent_sizes');
+    var expectedFiles = fs.readdirSync('test/expected/percent_sizes');
+
+    test.equal(actual, expected, 'Have the same SVG structure');
+    actualFiles.forEach(function(f, idx){
+      test.equal(f, expectedFiles[idx]);
+    });
+
+    test.done();
+  },
+  percent_sizes_error: function(test) {
+    test.expect(1);
+
+    var actualFiles = fs.readdirSync('tmp/percent_sizes_error');
+
+    test.equal(actualFiles.length, 0, "Shouldn't create files.");
+
+    test.done();
   }
 };

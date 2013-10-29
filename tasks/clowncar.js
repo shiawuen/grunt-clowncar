@@ -64,6 +64,10 @@ module.exports = function(grunt) {
         grunt.util.async.map(options.sizes, createThumb, createMediaQueries);
 
         function createThumb(width, callback){
+          width = normalise(width);
+          if (isNaN(width)) {
+            return NaN;
+          }
           var name = filename + '-' + width + ext;
           var newHeight = width / size.width * size.height;
 
@@ -81,15 +85,17 @@ module.exports = function(grunt) {
           , options.sizes[0]
           , function(prev, curr, callback){
               var idx = options.sizes.indexOf(curr);
-              var name = filename + '-' + results[idx] + ext;
+              var currAsNumber = results[idx];
+              var prevAsNumber = normalise(prev);
+              var name = filename + '-' + currAsNumber + ext;
               var minmax = {};
               if (idx === l - 1) {
-                minmax.min = prev + 1;
+                minmax.min = prevAsNumber + 1;
               } else if (idx) {
-                minmax.min = prev + 1;
-                minmax.max = curr;
+                minmax.min = prevAsNumber + 1;
+                minmax.max = currAsNumber;
               } else {
-                minmax.max = prev;
+                minmax.max = prevAsNumber;
               }
               mediaqueries.push(mq(name, minmax));
               callback(null, curr);
@@ -107,6 +113,12 @@ module.exports = function(grunt) {
           // Print a success message.
           grunt.log.writeln('File "' + f.dest + '" created.');
           next();
+        }
+
+        function normalise(width){
+          return typeof width === 'number'?
+            width
+          : Math.floor(size.width * Number(width.replace('%', '')) / 100);
         }
 
       });
