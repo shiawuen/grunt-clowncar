@@ -1,12 +1,18 @@
 {
   "name": "grunt-clowncar",
   "description": "Generate responsive images with clown car technique",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "https://github.com/shiawuen/grunt-clowncar",
   "author": {
     "name": "Tan Shiaw Uen",
     "email": "shiawuen@gmail.com"
   },
+  "contributors": [
+    {
+      "name": "Pedro Figueiredo",
+      "email": "me+github@pedrofigueiredo.org"
+    }
+  ]
   "repository": {
     "type": "git",
     "url": "git://github.com/shiawuen/grunt-clowncar.git"
