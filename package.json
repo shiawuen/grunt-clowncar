@@ -1,7 +1,7 @@
 {
   "name": "grunt-clowncar",
   "description": "Generate responsive images with clown car technique",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "homepage": "https://github.com/shiawuen/grunt-clowncar",
   "author": {
     "name": "Tan Shiaw Uen",
