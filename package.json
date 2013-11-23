@@ -12,7 +12,7 @@
       "name": "Pedro Figueiredo",
       "email": "me+github@pedrofigueiredo.org"
     }
-  ]
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/shiawuen/grunt-clowncar.git"
