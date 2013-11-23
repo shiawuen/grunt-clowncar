@@ -60,7 +60,10 @@ module.exports = function(grunt) {
         if (! fs.existsSync(destDir)) {
           grunt.file.mkdir(destDir);
         }
-
+        
+        // Store original source filename
+        var srcFile = g.data.path
+        
         grunt.util.async.map(options.sizes, createThumb, createMediaQueries);
 
         function createThumb(width, callback){
@@ -71,6 +74,9 @@ module.exports = function(grunt) {
           var name = filename + '-' + width + ext;
           var newHeight = width / size.width * size.height;
 
+          // Reload source file as GraphicsMagick misbehave when used in async
+          g = gm(srcFile);
+          
           g.thumb(width, newHeight, destDir + '/' + name, options.quality, function(err){
             if (err) { return callback(err); }
             callback(null, width);
