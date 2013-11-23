@@ -32,7 +32,7 @@ In your project's Gruntfile, add a section named `clowncar` to the data object p
 grunt.initConfig({
   clowncar: {
     options: {
-      size: [1000, 800, 600, 400]
+      sizes: [1000, 800, 600, 400]
     , quality: 75
     },
     your_target: {
