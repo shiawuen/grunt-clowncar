@@ -22,13 +22,20 @@ module.exports = function(grunt) {
 
   grunt.registerMultiTask('clowncar', 'Generating clown car SVG images', function() {
     var svgtmpl = '<?xml version="1.0" standalone="no"?>\n'
-      + '<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"\n'
-      + '"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">\n'
-      + '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {size}">\n'
-      + '<style>\n'
-      + 'svg { background-size: 100% 100%; background-repeat: no-repeat; }\n'
+      + '<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"'
+      + ' "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">\n'
+      + '<svg class="clowncar-{filename}"\n'
+      + '  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {size}"\n'
+      + '  preserveAspectRatio="xMidYMid">\n'
+      + '  <style>\n'
+      + '    svg.clowncar-{filename} {\n'
+      + '      width: 100%;\n'
+      + '      height: auto;\n'
+      + '      background-size: contain;\n'
+      + '      background-repeat: no-repeat;\n'
+      + '    }\n'
       + '{mediaqueries}\n'
-      + '</style>\n'
+      + '  </style>\n'
       + '</svg>';
 
     var options = this.options({
@@ -112,7 +119,8 @@ module.exports = function(grunt) {
         function save(){
           var svg = svgtmpl
             .replace('{size}', size.width +' ' + size.height)
-            .replace('{mediaqueries}', mediaqueries.join('\n'));
+            .replace('{mediaqueries}', mediaqueries.join('\n'))
+            .replace(/{filename}/g, filename);
 
           grunt.file.write(f.dest, svg);
 
@@ -149,9 +157,9 @@ module.exports = function(grunt) {
       if (mm.min) { query += '(min-width: ' + mm.min + 'px)'; }
       if (mm.min && mm.max) { query += ' and '; }
       if (mm.max) { query += '(max-width: ' + mm.max + 'px)'; }
-      return '@media screen and ' + query + ' {\n'
-        + '  svg { background-image: url("'+ url +'"); }\n'
-        + '}';
+      return '    @media screen and ' + query + ' {\n'
+        + '      svg.clowncar-{filename} { background-image: url('+ url +'); }\n'
+        + '    }';
     }
   });
 
